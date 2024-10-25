@@ -1,0 +1,137 @@
+/* src/components/CSVUpload.module.css */
+.bigContainer {
+    position: relative;
+    max-width: 900px;
+    height: auto; /* Adjust height to auto to accommodate content */
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f0f0f0; /* Light background for contrast */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007bff; /* Border color */
+  }
+  
+  .uploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .uploadHeading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .inputGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    gap: 20px; /* Space between items */
+    width: 100%; /* Full width of the container */
+    margin-bottom: 20px; /* Space below the grid */
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column; /* Label and input vertically */
+  }
+  
+  .inputLabel {
+    font-weight: bold; /* Bold labels */
+    margin-bottom: 5px; /* Space between label and input */
+  }
+  
+  .inputBox {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .fileUploadBox {
+    padding: 15px;
+    border: 2px dashed #bbb; /* Dashed border */
+    border-radius: 8px;
+    width: 60%; /* Full width of the container */
+    text-align: center; /* Center text */
+    cursor: pointer; /* Pointer cursor */
+    transition: border-color 0.3s; /* Smooth transition */
+  }
+  
+  .fileUploadBox:hover {
+    border-color: #007bff; /* Change border color on hover */
+  }
+  
+  .fileUploadBox input[type="file"] {
+    display: none; /* Hide default input */
+  }
+  
+  .uploadedSuccess {
+    color: green; /* Success message color */
+    margin-top: 20px; /* Space above success message */
+    display: flex;
+    align-items: center;
+  }
+  
+  .uploadedSuccess svg {
+    margin-right: 10px; /* Space between icon and text */
+  }
+  
+  /* Connect Wallet Section */
+  .connectWallet {
+    margin-top: 20px; /* Space above connect wallet section */
+    text-align: center; /* Center text */
+  }
+  
+  .connectButton {
+    padding: 10px 20px; /* Padding around button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth background transition */
+  }
+  
+  .connectButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Signature Upload Input */
+  .signatureUpload {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border for signature input */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Flex for icon and text */
+    align-items: center; /* Center vertically */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transitions */
+  }
+  
+  .signatureUpload:hover {
+    background-color: #e8f0fe; /* Light background on hover */
+    border-color: #007bff; /* Change border color on hover */
+  }
+  
+  .signatureUploadLabel {
+    flex-grow: 1; /* Allow label to take up available space */
+    display: flex; /* Flexbox for aligning icon and text */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+  }
+  
+  .hiddenInput {
+    display: none; /* Hide the default input */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    .inputGrid {
+      grid-template-columns: 1fr; /* Stack input fields on smaller screens */
+    }
+  
+    .fileUploadBox {
+      width: 90%; /* Full width for smaller screens */
+    }
+  }

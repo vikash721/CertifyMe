@@ -1,0 +1,19 @@
+/* CenteredContainer.module.css */
+.centeredWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Take full viewport height */
+    padding: 20px;
+    background-color: #f0f0f0; /* Optional: Set background color */
+  }
+  
+  .contentWrapper {
+    width: 80vw; /* 80% of the viewport width */
+    max-width: 1200px; /* Set a maximum width */
+    background-color: #fff; /* Optional: Set background for the container */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  }
+  

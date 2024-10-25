@@ -1,0 +1,122 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.templateHeader{
+  margin-bottom: 1.5rem;
+}
+
+.certifyme {
+  color: #1a73e8; /* Accent color for branding */
+}
+
+.generateSection {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 3rem;
+  color: #1a73e8;
+  margin-bottom: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a73e8;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #155ab6; /* Darker shade for hover */
+}
+
+.templatesSection {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sliderItem {
+  display: flex;
+  flex-direction: column; /* Stack certificate and button vertically */
+  align-items: center; /* Center content horizontally */
+  gap: 10px; /* Space between certificate and button */
+}
+
+.pdfButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 200px; /* Set a consistent button width */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.pdfButton:hover {
+  background-color: #155ab6; /* Darker shade for hover effect */
+  transform: translateY(-2px);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  color: #555;
+}
+
+
+
+/* Adjusting slick-slide for tighter spacing */
+.slick-slide {
+  display: flex !important; /* Ensure that flex is applied */
+  justify-content: center; /* Center slides */
+  align-items: center; /* Center slides vertically */
+  margin: 0 10px; /* Adjust margin to reduce space between certificates */
+}
+
+/* Optional: Add a custom style for the slider container */
+.slick-list {
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+}

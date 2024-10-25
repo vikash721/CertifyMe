@@ -1,0 +1,43 @@
+.certificate {
+    border: 2px solid #3498db; /* Border color */
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    width: 800px;
+    height: 500px;
+    background-color: #eef2f3; /* Light gray background */
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.recipient {
+    font-size: 28px;
+    margin: 20px 0;
+}
+
+.buildingIcon {
+    font-size: 60px; /* Larger icon size */
+    color: #2ecc71; /* Icon color */
+    margin: 20px 0;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.date {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.signatureSection {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #666;
+}

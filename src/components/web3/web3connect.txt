@@ -1,0 +1,77 @@
+import Web3 from "web3";
+import { certifyMeContractAbi } from "../web3/CertifyMeContractAbi.js";
+
+// Create a Web3 instance using the Infura URL
+const web3 = new Web3(
+  new Web3.providers.HttpProvider(
+    "https://sepolia.infura.io/v3/e7de2326ccac4aef982343cc6e8085b3"
+  )
+);
+const contractAddress = "0x0c838a0C0DFE1226c25d0523f8d2E20acA7B6f33";
+const factoryContract = new web3.eth.Contract(
+  certifyMeContractAbi,
+  contractAddress
+);
+
+export const getCertificateDetailsByUserAddress = async (walletAddress) => {
+  const data = await factoryContract.methods
+    .getAchievement(walletAddress)
+    .call();
+  console.log(data, "data");
+  return data;
+};
+
+// get gas price
+export const getGasPrice = async () => {
+  try {
+    const gasPrice = await web3.eth.getGasPrice();
+    return gasPrice;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+/// Static wallet address
+const staticWalletAddress = "0x55Dd96Ff38318cd3195fd64c1Da91441A51f010C";
+
+// Function to set an achievement
+export const setAchievementPDF = async (name, achievementType, url, privateKey) => {
+  try {
+    // Encode ABI with the arguments (name, achievementType, url)
+    const data = factoryContract.methods.setAchievement(name, achievementType, url).encodeABI();
+
+    // Estimate the gas required for this transaction
+    const estimateGas = await factoryContract.methods.setAchievement(name, achievementType, url).estimateGas({
+      from: staticWalletAddress
+    });
+
+    // Add a 10% buffer to the gas estimate
+    const bufferGas = Math.floor(Number(estimateGas) * 1.1);
+
+    // Prepare the transaction object
+    const tx = {
+      from: staticWalletAddress,
+      to: contractAddress,
+      gas: bufferGas,
+      data: data,
+      gasPrice: await getGasPrice()
+    };
+
+    // Sign the transaction with the private key associated with the static wallet address
+    const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
+    console.log(signedTx, "signex")
+
+    // Send the signed transaction and wait for the receipt
+    const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+
+    console.log("Transaction successful, receipt:", receipt);
+    return receipt;
+
+  } catch (err) {
+    // Log and handle the error
+    console.error("Web3 transaction error:", err);
+    throw new Error(`Failed to set achievement: ${err.message}`);
+  }
+};
+
+//changes here to check commit

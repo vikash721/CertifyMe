@@ -1,0 +1,116 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  min-width: 300px;
+  max-width: 90%;
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.modalContent:hover {
+  transform: scale(1.02);
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: #ff4d4d;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileImageContainer {
+  margin-bottom: 15px;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.placeholderImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  border: 2px dashed #ccc;
+}
+
+.profileItem {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.profileItem:hover {
+  color: #007bff;
+}
+
+/* New CSS for the Logout Button Container */
+.logoutButtonContainer {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 20px; /* Space above the button */
+}
+
+.logoutButton {
+  padding: 10px 20px;
+  background-color: red; /* Red background for logout button */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: darkred; /* Darker red on hover */
+}

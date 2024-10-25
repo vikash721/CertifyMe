@@ -1,0 +1,25 @@
+/* src/components/Certificates/certificates.css */
+.certificate {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .recipient, .description, .date, .signatureSection {
+    margin: 10px 0;
+  }
+  
+  .name {
+    font-weight: bold;
+  }
+  
+  .buildingIcon {
+    font-size: 50px;
+    margin: 20px 0;
+  }
