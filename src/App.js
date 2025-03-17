@@ -7,7 +7,8 @@ import Home from './components/Pages/HomePage/Home';
 import CertificatesDisplay from './components/Certificates/CertificatesDisplay';
 import ProtectedRoute from '././components/security/ProtectedRoute'; // Import the ProtectedRoute component
 import SetAchievementForm from './components/web3/contractService';
-import Certigen from './components/certGen/Certigen';
+import Certigen from './components/CreateCertificates/Certigen';
+import MarketPlace from './components/Ad/MarketPlace';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
 
           <Route path="/home/web3" element={<SetAchievementForm/>} />
           <Route path="/home/gen" element={<Certigen/>} />
+          <Route path="/home/marketplace" element={<MarketPlace/>} />
         </Routes>
       </div>
     </Router>

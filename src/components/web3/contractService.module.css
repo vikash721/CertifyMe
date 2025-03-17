@@ -73,3 +73,57 @@
     color: green; /* Success message color */
   }
   
+
+
+  .container {
+    padding: 20px;
+  }
+  
+  .templateSelection {
+    margin-bottom: 20px;
+  }
+  
+  .templateButton {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .templateButton:hover {
+    background-color: #45a049;
+  }
+  
+  .formContainer {
+    margin-top: 20px;
+  }
+  
+  .successMessage {
+    margin-top: 20px;
+    color: green;
+  }
+  
+
+  .templateSelection {
+    margin-bottom: 20px;
+  }
+  
+  .templateGrid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .template {
+    cursor: pointer;
+    border: 1px solid #ccc; /* Add some border for visibility */
+    padding: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .template:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
