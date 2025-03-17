@@ -90,6 +90,4 @@ We welcome contributions to improve and extend this project! To get started:
 4. Push to the branch: `git push origin feature-branch`.
 5. Submit a pull request.
 
-## License
 
-This project is licensed under the MIT License.
