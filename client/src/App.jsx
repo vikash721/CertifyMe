@@ -1,8 +1,12 @@
 import React from 'react'
+import Home from './pages/home'
 
 const App = () => {
   return (
-    <div>certify me</div>
+    <>
+  
+      <Home />
+    </>
   )
 }
 
