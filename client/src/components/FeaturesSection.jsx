@@ -14,7 +14,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Why Choose CertChain?
+            Why Choose CertifyMe?
           </motion.h2>
           <motion.div
             className="h-1 w-20 bg-blue-600 mx-auto mt-4"

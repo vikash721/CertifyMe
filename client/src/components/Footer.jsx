@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <SiEthereum className="h-6 w-6 text-blue-400" />
-              <span className="ml-2 text-xl font-bold text-white">CertChain</span>
+              <span className="ml-2 text-xl font-bold text-white">CertifyMe</span>
             </div>
             <p className="text-gray-400">Blockchain-powered certificate generation and verification platform.</p>
           </div>
@@ -84,7 +84,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-slate-800 mt-12 pt-8 text-center text-gray-500">
-          <p>© {new Date().getFullYear()} CertChain. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} CertifyMe. All rights reserved.</p>
         </div>
       </div>
     </footer>
