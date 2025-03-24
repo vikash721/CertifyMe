@@ -13,7 +13,7 @@ export default function CTASection() {
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
-            Join thousands of organizations that trust CertChain for their certificate issuance and verification
+            Join thousands of organizations that trust CerifyMe for their certificate issuance and verification
             needs.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

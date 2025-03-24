@@ -1,13 +1,15 @@
-import React from 'react'
-import Home from './pages/home'
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import IssuerDashboard from "./pages/IssuerDashboard"
 
-const App = () => {
+import NotFound from "./pages/NotFound";
+
+export default function App() {
   return (
-    <>
-  
-      <Home />
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
-
-export default App
