@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { SiEthereum } from "react-icons/si";
 import { HiOutlineDocumentAdd, HiOutlineDocumentSearch } from "react-icons/hi";
-import { Link } from "react-router-dom";
+
 export default function Header() {
 
-    
+      const { openLoginModal } = useModalStore(); // Get function to open modal
+
 
   return (
     <header className="relative overflow-hidden">
@@ -48,11 +49,9 @@ export default function Header() {
             <a href="#verify" className="hover:text-blue-400 transition-colors">
               Verify
             </a>
-            <Link to="/signin">
-  <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
-    Sign In
-  </button>
-</Link>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
+              Sign In
+            </button>
           </div>
         </nav>
 
@@ -70,11 +69,11 @@ export default function Header() {
               Generate tamper-proof certificates and verify their authenticity instantly with our blockchain technology.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+              <button className="cursor-pointerbg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
                 <HiOutlineDocumentAdd className="mr-2 h-5 w-5" />
                 Generate Certificate
               </button>
-              <button className="bg-transparent border border-blue-400 text-blue-400 hover:bg-blue-400/10 px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+              <button className="cursor-pointer bg-transparent border border-blue-400 text-blue-400 hover:bg-blue-400/10 px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
                 <HiOutlineDocumentSearch className="mr-2 h-5 w-5" />
                 Verify Certificate
               </button>
@@ -82,6 +81,8 @@ export default function Header() {
           </motion.div>
         </div>
       </div>
+
+      <LoginModal /> {/* Include modal component here */}
     </header>
   );
 }
