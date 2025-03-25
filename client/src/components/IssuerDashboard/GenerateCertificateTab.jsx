@@ -2,12 +2,15 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Download, Hexagon,Shield,X } from "lucide-react"
+import { Download, Hexagon, Shield, X } from "lucide-react"
 
 import GenerateCertificateForm from "./GenerateCertificateForm"
 import TemplateSelector from "./TemplateSelector"
+import BatchCertificateGenerate from "./BatchCertificateGeneration"
 
 export default function GenerateCertificateTab({ previewMode, setPreviewMode, formData, setFormData, templates, selectedTemplate, setSelectedTemplate }) {
+  const [formType, setFormType] = useState("single") // Track form type
+
   return (
     <div className="space-y-6">
       {previewMode ? (
@@ -19,7 +22,7 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
         >
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-lg font-bold">Certificate Preview</h2>
-            <button onClick={() => setPreviewMode(false)} className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+            <button onClick={() => setPreviewMode(false)} className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
               <X className="h-4 w-4 mr-2" />
               Close Preview
             </button>
@@ -80,8 +83,8 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
                     <p className="font-mono">{formData.certificateId}</p>
                   </div>
                   <div>
-                    <p className="font-bold">Expiry Date</p>
-                    <p>{formData.expiryDate}</p>
+                    <p className="font-bold">Issued By</p>
+                    <p>{formData.issuedBy}</p>
                   </div>
                 </div>
               </div>
@@ -89,11 +92,11 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
           </div>
 
           <div className="mt-6 flex justify-center space-x-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+            <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
               <Download className="h-4 w-4 mr-2" />
               Download Certificate
             </button>
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+            <button className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
               <Shield className="h-4 w-4 mr-2" />
               Issue on Blockchain
             </button>
@@ -101,8 +104,14 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
         </motion.div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <GenerateCertificateForm formData={formData} setFormData={setFormData} setPreviewMode={setPreviewMode} />
-          <TemplateSelector templates={templates} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
+          <div className="lg:col-span-2">
+            {formType === "single" ? (
+              <GenerateCertificateForm formData={formData} setFormData={setFormData} setPreviewMode={setPreviewMode} />
+            ) : (
+              <BatchCertificateGenerate formData={formData} setFormData={setFormData} />
+            )}
+          </div>
+          <TemplateSelector templates={templates} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} setFormType={setFormType} />
         </div>
       )}
     </div>

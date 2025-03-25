@@ -20,7 +20,7 @@ export default function IssuerDashboard() {
     recipientEmail: "john.doe@example.com",
     courseTitle: "Advanced Blockchain Development",
     issueDate: "2023-12-15",
-    expiryDate: "2025-12-15",
+    issuedBy: "CertifyMe",
     certificateId: "CERT-" + Math.random().toString(36).substring(2, 10).toUpperCase(),
     additionalDetails: "Completed with distinction (95% score)",
   })

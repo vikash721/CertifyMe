@@ -7,10 +7,10 @@ export default function Header({ sidebarOpen, setSidebarOpen, activeTab }) {
     <header className="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center">
-          <button className="lg:hidden mr-2" onClick={() => setSidebarOpen(true)}>
+          <button className="cursor-pointer lg:hidden mr-2" onClick={() => setSidebarOpen(true)}>
             <Menu className="h-6 w-6" />
           </button>
-          <h1 className="text-xl font-bold">
+          <h1 className="cursor-pointer text-xl font-bold">
             {activeTab === "overview" && "Dashboard Overview"}
             {activeTab === "generate" && "Generate Certificate"}
             {activeTab === "certificates" && "Manage Certificates"}
@@ -29,7 +29,7 @@ export default function Header({ sidebarOpen, setSidebarOpen, activeTab }) {
           </div>
           <button className="relative">
             <Bell className="h-6 w-6" />
-            <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 text-xs flex items-center justify-center">
+            <span className="cursor-pointer absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 text-xs flex items-center justify-center">
               3
             </span>
           </button>

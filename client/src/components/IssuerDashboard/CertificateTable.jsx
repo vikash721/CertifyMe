@@ -33,13 +33,13 @@ export default function CertificateTable({ recentCertificates }) {
               </td>
               <td className="p-4">
                 <div className="flex items-center space-x-2">
-                  <button className="text-slate-400 hover:text-white transition-colors">
+                  <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                     <FiEye className="h-4 w-4" />
                   </button>
-                  <button className="text-slate-400 hover:text-white transition-colors">
+                  <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                     <Download className="h-4 w-4" />
                   </button>
-                  <button className="text-slate-400 hover:text-white transition-colors">
+                  <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                     <FiCopy className="h-4 w-4" />
                   </button>
                 </div>

@@ -17,10 +17,10 @@ export default function CTASection() {
             needs.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-medium transition-colors">
+            <button className="cursor-pointer bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-medium transition-colors">
               Create Free Account
             </button>
-            <button className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-medium transition-colors">
+            <button className="cursor-pointer bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-medium transition-colors">
               Schedule Demo
             </button>
           </div>

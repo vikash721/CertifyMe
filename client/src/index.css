@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 6px; /* Make scrollbar thinner */
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b; /* Track color (dark blue-gray) */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #64748b; /* Scrollbar handle color */
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; /* Lighter color on hover */
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #64748b #1e293b;
+  }
+  
