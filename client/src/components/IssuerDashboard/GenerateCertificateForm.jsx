@@ -2,29 +2,9 @@
 
 import { motion } from "framer-motion"
 import {
-    BarChart3,
-    Bell,
-    Clock,
-    Download,
-    FileText,
-    Hexagon,
-    Image,
-    LayoutDashboard,
-    LogOut,
-    Menu,
-    Plus,
-    Search,
-    Settings,
-    Shield,
-    Users,
-    X,
+
     RefreshCcw,
-    Upload,
-    Filter,
-    Edit,
-    Trash,
-    ChevronLeft,
-    ChevronRight,
+  
   } from "lucide-react"
   import { FiCheck, FiCopy, FiEye } from "react-icons/fi"
 

@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { SiEthereum } from "react-icons/si";
 import { HiOutlineDocumentAdd, HiOutlineDocumentSearch } from "react-icons/hi";
+import LoginModal from "./LoginModal"; // Import the modal component
+import useModalStore from "../store/useModalStore";
 
 export default function Header() {
 
-    
+      const { openLoginModal } = useModalStore(); // Get function to open modal
+
 
   return (
     <header className="relative overflow-hidden">
@@ -48,7 +51,10 @@ export default function Header() {
             <a href="#verify" className="hover:text-blue-400 transition-colors">
               Verify
             </a>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
+            <button
+              onClick={openLoginModal} // Open modal on click
+              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors"
+            >
               Sign In
             </button>
           </div>
@@ -80,6 +86,8 @@ export default function Header() {
           </motion.div>
         </div>
       </div>
+
+      <LoginModal /> {/* Include modal component here */}
     </header>
   );
 }

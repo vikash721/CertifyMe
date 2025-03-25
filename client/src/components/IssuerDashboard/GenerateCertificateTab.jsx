@@ -2,12 +2,15 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Download, Hexagon,Shield,X } from "lucide-react"
+import { Download, Hexagon, Shield, X } from "lucide-react"
 
 import GenerateCertificateForm from "./GenerateCertificateForm"
 import TemplateSelector from "./TemplateSelector"
+import BatchCertificateGenerate from "./BatchCertificateGeneration"
 
 export default function GenerateCertificateTab({ previewMode, setPreviewMode, formData, setFormData, templates, selectedTemplate, setSelectedTemplate }) {
+  const [formType, setFormType] = useState("single") // Track form type
+
   return (
     <div className="space-y-6">
       {previewMode ? (
@@ -101,8 +104,14 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
         </motion.div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <GenerateCertificateForm formData={formData} setFormData={setFormData} setPreviewMode={setPreviewMode} />
-          <TemplateSelector templates={templates} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
+          <div className="lg:col-span-2">
+            {formType === "single" ? (
+              <GenerateCertificateForm formData={formData} setFormData={setFormData} setPreviewMode={setPreviewMode} />
+            ) : (
+              <BatchCertificateGenerate formData={formData} setFormData={setFormData} />
+            )}
+          </div>
+          <TemplateSelector templates={templates} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} setFormType={setFormType} />
         </div>
       )}
     </div>

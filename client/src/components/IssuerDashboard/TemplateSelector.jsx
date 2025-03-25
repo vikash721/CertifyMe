@@ -1,14 +1,15 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
-import {
-  
-    Upload,
-    
-  } from "lucide-react"
-  import { FiCheck } from "react-icons/fi"
+import { Upload } from "lucide-react"
+import { FiCheck } from "react-icons/fi"
 
-export default function TemplateSelector({ templates, selectedTemplate, setSelectedTemplate }) {
+export default function TemplateSelector({ templates, selectedTemplate, setSelectedTemplate, setFormType }) {
+  const handleCsvUploadClick = () => {
+    setFormType("batch")
+  }
+
   return (
     <motion.div
       className="bg-slate-800 rounded-xl border border-slate-700"
@@ -44,42 +45,15 @@ export default function TemplateSelector({ templates, selectedTemplate, setSelec
           ))}
         </div>
 
-        <div className="mt-6">
-          <h3 className="text-sm font-medium mb-3">Advanced Options</h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <label className="text-sm">Include QR Code</label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                <input type="checkbox" id="toggle-qr" className="sr-only peer" defaultChecked />
-                <div className="h-4 w-10 bg-slate-600 rounded-full peer peer-checked:bg-blue-600"></div>
-                <div className="absolute w-6 h-6 bg-white rounded-full -left-1 -top-1 transition-all transform peer-checked:translate-x-5"></div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm">Add Digital Signature</label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                <input type="checkbox" id="toggle-signature" className="sr-only peer" defaultChecked />
-                <div className="h-4 w-10 bg-slate-600 rounded-full peer peer-checked:bg-blue-600"></div>
-                <div className="absolute w-6 h-6 bg-white rounded-full -left-1 -top-1 transition-all transform peer-checked:translate-x-5"></div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm">Enable Blockchain Verification</label>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                <input type="checkbox" id="toggle-blockchain" className="sr-only peer" defaultChecked />
-                <div className="h-4 w-10 bg-slate-600 rounded-full peer peer-checked:bg-blue-600"></div>
-                <div className="absolute w-6 h-6 bg-white rounded-full -left-1 -top-1 transition-all transform peer-checked:translate-x-5"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="mt-6 pt-6 border-t border-slate-700">
           <h3 className="text-sm font-medium mb-3">Batch Generation</h3>
           <p className="text-xs text-slate-400 mb-3">
             Upload a CSV file to generate multiple certificates at once
           </p>
-          <button className="w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center">
+          <button
+            className="w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+            onClick={handleCsvUploadClick}
+          >
             <Upload className="h-4 w-4 mr-2" />
             Upload CSV File
           </button>
