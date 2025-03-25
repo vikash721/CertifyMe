@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { SiEthereum } from "react-icons/si";
 import { HiOutlineDocumentAdd, HiOutlineDocumentSearch } from "react-icons/hi";
-
+import { Link } from "react-router-dom";
 export default function Header() {
 
     
@@ -48,9 +48,11 @@ export default function Header() {
             <a href="#verify" className="hover:text-blue-400 transition-colors">
               Verify
             </a>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
-              Sign In
-            </button>
+            <Link to="/signin">
+  <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
+    Sign In
+  </button>
+</Link>
           </div>
         </nav>
 
