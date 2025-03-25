@@ -1,9 +1,7 @@
 "use client"
 
 import React, { useState, useRef, useCallback } from "react"
-import { motion } from "framer-motion"
 import Papa from "papaparse"
-import { ArrowRight, ChevronDown } from "lucide-react"
 import FileUpload from "./FileUpload"
 import DataTable from "./DataTable"
 import Deployment from "./Deployment"
