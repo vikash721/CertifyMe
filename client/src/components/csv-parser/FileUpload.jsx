@@ -89,7 +89,7 @@ export default function FileUpload({
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 1 }}
             onClick={proceedToStep2}
-            className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center cursor-pointer"
+            className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center "
           >
             Review Data <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
