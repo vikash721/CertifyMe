@@ -6,37 +6,38 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  
   const [error, setError] = useState("");
-  const navigate = useNavigate();  // For navigation after successful sign-up
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
+
     try {
-      const response = await fetch("/api/auth/signup", {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: user.email, password: user.password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email, password: user.password }),
       });
 
       const data = await response.json();
       if (response.ok) {
         console.log("Signup successful");
-        navigate("/signin"); // Redirect to the login page
+        navigate("/signin");
       } else {
-        setError(data.message);
-        console.error("Signup failed:", data.message);
+        setError(data.message || "Signup failed. Please try again.");
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
-      console.error("Error:", err);
+      setError("Network error. Please check your internet connection.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,8 +68,9 @@ const SignUp = () => {
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-md font-semibold transition duration-300"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
         <p className="text-center mt-4">

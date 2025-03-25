@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -8,39 +8,38 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Added navigation hook
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    setError(""); // Clear error when user starts typing
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
-        email,
-        password,
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: user.email, password: user.password }), // Fixed payload
       });
-  
-      // Check if the response is not empty before using it
-      if (response.data) {
-        // Assuming response contains a message or token
-        localStorage.setItem('token', response.data.token);
-        console.log('Login successful');
-        // Redirect or update UI here
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        console.log("Login successful");
+        navigate("/dashboard"); // Redirect to dashboard after login
       } else {
-        console.error('Empty response received');
+        setError(data.message || "Invalid credentials");
+        console.error("Login failed:", data.message);
       }
     } catch (err) {
-      // Handle error gracefully
-      if (err.response && err.response.data) {
-        setError(err.response.data.message || 'Login failed');
-      } else {
-        setError('Unexpected error occurred');
-      }
+      setError("An error occurred. Please try again.");
+      console.error("Error:", err);
     }
   };
-  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">

@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -27,7 +27,7 @@ app.use(passport.session());
 connectDB();
 
 // Routes
-app.use("/auth", authRoutes); // Authentication routes
+app.use("/api/auth", authRoutes); // Authentication routes
 
 // Root Route
 app.get("/", (req, res) => {
