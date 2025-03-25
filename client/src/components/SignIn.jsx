@@ -8,11 +8,11 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Added navigation hook
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -23,21 +23,19 @@ const SignIn = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: user.email, password: user.password }), // Fixed payload
+        body: JSON.stringify({ email: user.email, password: user.password }),
       });
 
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
         console.log("Login successful");
-        navigate("/dashboard"); // Redirect to dashboard after login
+        navigate("/dashboard");
       } else {
         setError(data.message || "Invalid credentials");
-        console.error("Login failed:", data.message);
       }
     } catch (err) {
       setError("An error occurred. Please try again.");
-      console.error("Error:", err);
     }
   };
 
@@ -72,6 +70,14 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => (window.location.href = "http://localhost:5000/api/auth/google")}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
+          >
+            Sign in with Google
+          </button>
+        </div>
         <p className="text-center mt-4">
           Don't have an account?{" "}
           <Link to="/signup" className="text-blue-400 hover:underline">
