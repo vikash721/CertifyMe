@@ -26,7 +26,7 @@ export default function FileUpload({
         {fileName && (
           <button
             onClick={clearData}
-            className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg text-sm transition-colors flex items-center"
+            className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg text-sm transition-colors flex items-center"
           >
             <X className="h-4 w-4 mr-1.5" />
             Clear
@@ -87,9 +87,9 @@ export default function FileUpload({
         <div className="mt-6 flex justify-end">
           <motion.button
             whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 98 }}
+            whileTap={{ scale: 1 }}
             onClick={proceedToStep2}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center"
+            className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center cursor-pointer"
           >
             Review Data <ArrowRight className="ml-2 h-4 w-4" />
           </motion.button>
@@ -102,7 +102,7 @@ export default function FileUpload({
         <p className="text-xs text-slate-400 mb-3">
           Download our CSV template to ensure your data is formatted correctly
         </p>
-        <button className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+        <button className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
           <Download className="h-4 w-4 mr-2" />
           Download CSV Template
         </button>

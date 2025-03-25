@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Loader, Shield, FileText, Plus } from "lucide-react"
+import { Loader, Shield, FileText, Plus, ChevronDown } from "lucide-react"
 import { FiCheck } from "react-icons/fi"
 
 export default function Deployment({
@@ -9,6 +9,7 @@ export default function Deployment({
   deploymentSuccess,
   clearData,
   csvData,
+  goBackToStep2
 }) {
   return (
     <motion.div
@@ -27,12 +28,12 @@ export default function Deployment({
           <div className="flex justify-center space-x-4">
             <button
               onClick={clearData}
-              className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center"
+              className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center"
             >
               <Plus className="h-4 w-4 mr-2" />
               Create New Batch
             </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+            <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center">
               <FileText className="h-4 w-4 mr-2" />
               View All Certificates
             </button>
@@ -40,6 +41,16 @@ export default function Deployment({
         </div>
       ) : (
         <>
+          <div className="flex items-center mb-6">
+            <button
+              onClick={goBackToStep2}
+              className=" cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg text-sm transition-colors flex items-center mr-4"
+            >
+              <ChevronDown className="h-4 w-4 mr-1.5 rotate-90" />
+              Back
+            </button>
+            <h2 className="cursor-pointer text-lg font-bold">Review Certificate Data</h2>
+          </div>
           <div className="flex items-center mb-6">
             <div className="h-10 w-10 rounded-lg bg-blue-600/20 flex items-center justify-center mr-4">
               <Shield className="h-6 w-6 text-blue-400" />
@@ -70,7 +81,7 @@ export default function Deployment({
             <button
               onClick={handleDeployToBlockchain}
               disabled={isDeploying || csvData.length === 0}
-              className={`px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
+              className={`cursor-pointer px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center ${
                 isDeploying || csvData.length === 0
                   ? "bg-slate-700 text-slate-500 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white"

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion"
 import {
 
-    RefreshCcw,
-  
-  } from "lucide-react"
-  import { FiCheck, FiCopy, FiEye } from "react-icons/fi"
+  RefreshCcw,
+
+} from "lucide-react"
+import { FiCheck, FiCopy, FiEye } from "react-icons/fi"
 
 export default function GenerateCertificateForm({ formData, setFormData, setPreviewMode }) {
   const handleInputChange = (e) => {
@@ -76,11 +76,11 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Expiry Date (Optional)</label>
+              <label className="block text-sm font-medium mb-2">Issued By</label>
               <input
-                type="date"
-                name="expiryDate"
-                value={formData.expiryDate}
+                type="text"
+                name="issuedBy"
+                value={formData.issuedBy}
                 onChange={handleInputChange}
                 className="w-full bg-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -100,7 +100,7 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
               />
               <button
                 type="button"
-                className="bg-slate-600 hover:bg-slate-500 px-4 rounded-r-lg flex items-center justify-center transition-colors"
+                className="cursor-pointerv bg-slate-600 hover:bg-slate-500 px-4 rounded-r-lg flex items-center justify-center transition-colors"
                 onClick={() =>
                   setFormData((prev) => ({
                     ...prev,
@@ -128,7 +128,7 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
           <div className="flex justify-end space-x-3">
             <button
               type="button"
-              className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Save as Draft
             </button>
@@ -137,7 +137,7 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
               onClick={() => setPreviewMode(true)}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center"
             >
-              <FiEye className="h-4 w-4 mr-2" />
+              <FiEye className="cursor-pointer h-4 w-4 mr-2" />
               Preview Certificate
             </button>
           </div>

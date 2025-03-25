@@ -106,7 +106,7 @@ export default function OverviewTab({ stats, recentCertificates }) {
             <h2 className="text-lg font-bold">Recent Certificates</h2>
             <p className="text-sm text-slate-400">Manage your recently issued certificates</p>
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+          <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
             <Plus className="h-4 w-4 mr-2" />
             New Certificate
           </button>
@@ -139,13 +139,13 @@ export default function OverviewTab({ stats, recentCertificates }) {
                   </td>
                   <td className="p-4">
                     <div className="flex items-center space-x-2">
-                      <button className="text-slate-400 hover:text-white transition-colors">
+                      <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                         <FiEye className="h-4 w-4" />
                       </button>
-                      <button className="text-slate-400 hover:text-white transition-colors">
+                      <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                         <Download className="h-4 w-4" />
                       </button>
-                      <button className="text-slate-400 hover:text-white transition-colors">
+                      <button className="cursor-pointer text-slate-400 hover:text-white transition-colors">
                         <FiCopy className="h-4 w-4" />
                       </button>
                     </div>

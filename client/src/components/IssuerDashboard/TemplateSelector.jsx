@@ -1,13 +1,27 @@
 "use client"
 
-import React from "react"
+import {useState, React} from "react"
 import { motion } from "framer-motion"
-import { Upload } from "lucide-react"
+import { Upload,FileEdit } from "lucide-react"
 import { FiCheck } from "react-icons/fi"
+import { SiQwant } from "react-icons/si"
 
 export default function TemplateSelector({ templates, selectedTemplate, setSelectedTemplate, setFormType }) {
+
+  const [button, setButton] = useState("batch");
+
   const handleCsvUploadClick = () => {
     setFormType("batch")
+    setButton("single")
+    
+  }
+  const singleUploadClick = () => {
+    setFormType("single")
+    setButton("batch")
+    
+
+    
+
   }
 
   return (
@@ -45,22 +59,45 @@ export default function TemplateSelector({ templates, selectedTemplate, setSelec
           ))}
         </div>
 
-        <div className="mt-6 pt-6 border-t border-slate-700">
+        {button === "batch" ? (<div className="cursor-pointer mt-6 pt-6 border-t border-slate-700">
           <h3 className="text-sm font-medium mb-3">Batch Generation</h3>
           <p className="text-xs text-slate-400 mb-3">
-            Upload a CSV file to generate multiple certificates at once
+            Upload a CSV file to generate multiple certificates at once.
           </p>
           <button
-            className="w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+            className="cursor-pointer w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
             onClick={handleCsvUploadClick}
           >
             <Upload className="h-4 w-4 mr-2" />
             Upload CSV File
           </button>
-          <a href="#" className="text-xs text-blue-400 hover:text-blue-300 mt-2 inline-block">
+          <a href="#" className="cursor-pointer text-xs text-blue-400 hover:text-blue-300 mt-2 inline-block">
             Download CSV Template
           </a>
         </div>
+        ) : ( 
+          
+        <div className="mt-6 pt-6 border-t border-slate-700">
+        <h3 className="text-sm font-medium mb-3">Single-Entry Generation</h3>
+        <p className="text-xs text-slate-400 mb-3">
+        Fill out the form to generate a single certificate.
+        </p>
+        <button
+          className="cursor-pointer w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
+          onClick={singleUploadClick}
+        >
+          <FileEdit className="h-4 w-4 mr-2" />
+          Click to Generate One Certificate
+        </button>
+        
+      </div> 
+        )
+          
+        }
+
+        
+
+
       </div>
     </motion.div>
   )

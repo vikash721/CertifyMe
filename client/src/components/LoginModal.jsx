@@ -18,7 +18,7 @@ export default function LoginModal() {
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
         {/* Close Button */}
-        <button onClick={closeLoginModal} className="absolute top-3 right-3 text-gray-400 hover:text-white transition">
+        <button onClick={closeLoginModal} className="cursor-pointer absolute top-3 right-3 text-gray-400 hover:text-white transition">
           <AiOutlineClose size={20} />
         </button>
 
@@ -40,7 +40,7 @@ export default function LoginModal() {
         </div>
 
         {/* Login Button */}
-        <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+        <button className="cursor-pointer mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
           Sign In
         </button>
 
@@ -53,11 +53,11 @@ export default function LoginModal() {
 
         {/* OAuth Login Options */}
         <div className="space-y-3">
-          <button className="w-full flex items-center justify-center bg-gray-800 border border-gray-600 hover:bg-gray-700 py-3 rounded-lg font-medium transition">
+          <button className="cursor-pointer w-full flex items-center justify-center bg-gray-800 border border-gray-600 hover:bg-gray-700 py-3 rounded-lg font-medium transition">
             <AiFillGoogleCircle className="mr-2 text-red-500" size={24} />
             Sign in with Google
           </button>
-          <button className="w-full flex items-center justify-center bg-gray-800 border border-gray-600 hover:bg-gray-700 py-3 rounded-lg font-medium transition">
+          <button className="cursor-pointer w-full flex items-center justify-center bg-gray-800 border border-gray-600 hover:bg-gray-700 py-3 rounded-lg font-medium transition">
             <FaMicrosoft className="mr-2 text-blue-400" size={24} />
             Sign in with Microsoft
           </button>

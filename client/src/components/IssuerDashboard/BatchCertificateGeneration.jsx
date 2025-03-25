@@ -10,13 +10,7 @@ import {
 import BatchUpload from "../csv-parser/BatchUpload"
 
 export default function BatchCertificateGnerate({ formData, setFormData, setPreviewMode }) {
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
+  
 
   return (
     <motion.div

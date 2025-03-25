@@ -77,7 +77,7 @@ export default function BatchUpload() {
   }
 
   const handleDrop = (e) => {
-    e.preventDefault()
+    e.prevent.prevent()
     e.stopPropagation()
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
@@ -187,26 +187,49 @@ export default function BatchUpload() {
     }
   }
 
+  const proceedToStep3 = () => {
+    setStep(3)
+  }
+
   const goBackToStep1 = () => {
     setStep(1)
+  }
+
+  const goBackToStep2 = () => {
+    setStep(2)
   }
 
   return (
     <div className="p-6 space-y-6">
       {/* Step Indicator */}
       <div className="flex items-center mb-8">
+        {/* Step 1 */}
         <div
-          className={`flex items-center justify-center h-10 w-10 rounded-full ${step === 1 ? "bg-blue-600" : "bg-blue-600/20 text-blue-400"} text-white font-bold`}
+          className={`flex items-center justify-center h-10 w-10 rounded-full ${step >= 1 ? "bg-blue-600 text-white" : "bg-blue-600/20 text-blue-400"
+            } font-bold`}
         >
           1
         </div>
-        <div className={`h-1 w-20 ${step === 1 ? "bg-slate-700" : "bg-blue-600"}`}></div>
+        <div className={`h-1 w-20 ${step > 1 ? "bg-blue-600" : "bg-slate-700"}`}></div>
+
+        {/* Step 2 */}
         <div
-          className={`flex items-center justify-center h-10 w-10 rounded-full ${step === 2 ? "bg-blue-600" : "bg-slate-700"} text-white font-bold`}
+          className={`flex items-center justify-center h-10 w-10 rounded-full ${step >= 2 ? "bg-blue-600 text-white" : "bg-blue-600/20 text-blue-400"
+            } font-bold`}
         >
           2
         </div>
+        <div className={`h-1 w-20 ${step > 2 ? "bg-blue-600" : "bg-slate-700"}`}></div>
+
+        {/* Step 3 */}
+        <div
+          className={`flex items-center justify-center h-10 w-10 rounded-full ${step >= 3 ? "bg-blue-600 text-white" : "bg-blue-600/20 text-blue-400"
+            } font-bold`}
+        >
+          3
+        </div>
       </div>
+
 
       {step === 1 ? (
         <FileUpload
@@ -221,7 +244,7 @@ export default function BatchUpload() {
           proceedToStep2={proceedToStep2}
           csvData={csvData}
         />
-      ) : (
+      ) : step === 2 ? (
         <div className="space-y-6">
           <DataTable
             sortedData={sortedData}
@@ -237,15 +260,18 @@ export default function BatchUpload() {
             exportToCSV={exportToCSV}
             goBackToStep1={goBackToStep1}
             csvData={csvData}
-          />
-          <Deployment
-            handleDeployToBlockchain={handleDeployToBlockchain}
-            isDeploying={isDeploying}
-            deploymentSuccess={deploymentSuccess}
-            clearData={clearData}
-            csvData={csvData}
+            proceedToStep3={proceedToStep3}
           />
         </div>
+      ) : (
+        <Deployment
+          handleDeployToBlockchain={handleDeployToBlockchain}
+          isDeploying={isDeploying}
+          deploymentSuccess={deploymentSuccess}
+          clearData={clearData}
+          csvData={csvData}
+          goBackToStep2={goBackToStep2}
+        />
       )}
     </div>
   )

@@ -49,7 +49,7 @@ export default function VerificationForm() {
           <button
             type="submit"
             disabled={isVerifying}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center disabled:opacity-70"
+            className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center disabled:opacity-70"
           >
             {isVerifying ? (
               <span className="flex items-center">
