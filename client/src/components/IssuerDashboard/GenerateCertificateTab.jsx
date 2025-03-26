@@ -7,9 +7,21 @@ import { Download, Hexagon, Shield, X } from "lucide-react"
 import GenerateCertificateForm from "./GenerateCertificateForm"
 import TemplateSelector from "./TemplateSelector"
 import BatchCertificateGenerate from "./BatchCertificateGeneration"
+import BlockchainIssueModal from "../web3/BlockchainIssueModal" // Import the modal
 
 export default function GenerateCertificateTab({ previewMode, setPreviewMode, formData, setFormData, templates, selectedTemplate, setSelectedTemplate }) {
   const [formType, setFormType] = useState("single") // Track form type
+  const [isModalOpen, setIsModalOpen] = useState(false) // State to control modal visibility
+
+  const handleIssueCertificate = () => {
+    setIsModalOpen(true) // Open modal when clicking "Issue on Blockchain"
+  }
+
+  const handleConfirmIssue = () => {
+    setIsModalOpen(false)
+    // Add blockchain issuing logic here
+    alert("Certificate issued on blockchain!") // Replace with actual blockchain integration
+  }
 
   return (
     <div className="space-y-6">
@@ -44,7 +56,7 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div
                     key={i}
-                    className="absolute h-40 w-40 rounded-full bg-white"
+                    className="absolute h-40 w-40 rounded-full bg-white "
                     style={{
                       left: `${Math.random() * 100}%`,
                       top: `${Math.random() * 100}%`,
@@ -69,7 +81,7 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
                   <p className="text-lg mb-4">This certifies that</p>
                   <p className="text-3xl font-bold mb-4">{formData.recipientName}</p>
                   <p className="text-lg mb-4">has successfully completed the course</p>
-                  <p className="text-2xl font-bold mb-6">{formData.courseTitle}</p>
+                  <p className="text-2xl font-bold mb-6">{formData.achievementTitle}</p>
                   <p className="text-sm opacity-80">{formData.additionalDetails}</p>
                 </div>
 
@@ -92,14 +104,25 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
           </div>
 
           <div className="mt-6 flex justify-center space-x-4">
-            <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+            <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center z-30">
               <Download className="h-4 w-4 mr-2" />
               Download Certificate
             </button>
-            <button className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+
+
+
+            <button
+              onClick={handleIssueCertificate}
+              formData={formData}
+              className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center z-30"
+            >
               <Shield className="h-4 w-4 mr-2" />
               Issue on Blockchain
             </button>
+
+
+
+            
           </div>
         </motion.div>
       ) : (
@@ -114,6 +137,14 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
           <TemplateSelector templates={templates} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} setFormType={setFormType} />
         </div>
       )}
+
+      {/* Blockchain Issue Modal */}
+      <BlockchainIssueModal
+      formData={formData}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmIssue}
+      />
     </div>
   )
 }

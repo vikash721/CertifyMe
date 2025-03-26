@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Wallet, X, LogOut } from "lucide-react"
+import { Wallet, X, LogOut, CheckCircle, Copy,Settings  } from "lucide-react"
 import { motion } from "framer-motion"
 import { ethers } from "ethers"
 
@@ -39,13 +39,20 @@ export default function ConnectWallet() {
     }
   }
 
-  const disconnectWallet = () => {
-    setWalletConnected(false)
-    setSelectedWallet(null)
-    setAccount("")
-    setBalance("")
-    setNetwork("")
-  }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -95,7 +102,7 @@ export default function ConnectWallet() {
                   />
                 </div>
                 <span className="text-xl font-semibold text-gray-200">{selectedWallet}</span>
-                
+            
                 {/* Account Info */}
                 <div className="bg-slate-900/50 p-3 rounded-xl w-full text-center mt-3">
                   <span className="text-sm text-gray-400">Address:</span>
@@ -112,17 +119,20 @@ export default function ConnectWallet() {
                     <span className="font-medium">{balance} ETH</span>
                   </div>
                 </div>
-              </div>
             
-              {/* Disconnect Button */}
-              <button
-                onClick={disconnectWallet}
-                className="bg-gradient-to-r from-red-500 to-rose-600 hover:scale-105 transition-transform text-white px-5 py-3 rounded-xl text-sm font-medium flex items-center gap-2 shadow-lg"
-              >
-                <LogOut className="h-5 w-5" />
-                Disconnect Wallet
-              </button>
+                {/* Connected Status & Copy Button */}
+                <div className="flex items-center gap-3 mt-4">
+                  {/* Connected Badge */}
+                  <span className="bg-green-600/20 text-green-400 text-xs px-3 py-1 rounded-full flex items-center gap-1">
+                    <CheckCircle className="h-4 w-4" />
+                    Connected
+                  </span>
+            
+                  
+                </div>
+              </div>
             </div>
+            
             
             ) : (
               <div className="grid grid-cols-3 gap-4">
