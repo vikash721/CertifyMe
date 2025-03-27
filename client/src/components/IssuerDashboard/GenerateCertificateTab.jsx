@@ -8,6 +8,7 @@ import GenerateCertificateForm from "./GenerateCertificateForm"
 import TemplateSelector from "./TemplateSelector"
 import BatchCertificateGenerate from "./BatchCertificateGeneration"
 import BlockchainIssueModal from "../web3/BlockchainIssueModal" // Import the modal
+import PaymentModal from "../payment/PaymentModal"
 
 export default function GenerateCertificateTab({ previewMode, setPreviewMode, formData, setFormData, templates, selectedTemplate, setSelectedTemplate }) {
   const [formType, setFormType] = useState("single") // Track form type
@@ -139,12 +140,13 @@ export default function GenerateCertificateTab({ previewMode, setPreviewMode, fo
       )}
 
       {/* Blockchain Issue Modal */}
-      <BlockchainIssueModal
+      <PaymentModal
       formData={formData}
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {setIsModalOpen(false); console.log("hii")}}
         onConfirm={handleConfirmIssue}
       />
+      
     </div>
   )
 }

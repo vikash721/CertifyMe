@@ -24,10 +24,10 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, activeTab, setAct
       <div className="p-4">
         <div className="flex items-center mb-6">
           <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-            <span className="font-bold">JD</span>
+            <span className="font-bold">VK</span>
           </div>
           <div className="ml-3">
-            <p className="font-medium">John Doe</p>
+            <p className="font-medium">Vikash Kumar</p>
             <p className="text-xs text-slate-400">Administrator</p>
           </div>
         </div>

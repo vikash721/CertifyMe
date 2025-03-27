@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import BatchCertificateGnerate from "./components/IssuerDashboard/BatchCertificateGeneration";
 import BatchUpload from "./components/csv-parser/BatchUpload";
 import TemplatesPage from "./components/IssuerDashboard/Templates/CertificateTemplates";
+import PaymentModal from "./components/payment/PaymentModal"
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/test" element={<BatchUpload/>} />
 
       <Route path="/template" element={<TemplatesPage/>} />
+     <Route path="/pay" element={<PaymentModal/>} />
 
 
       <Route path="*" element={<NotFound />} />
