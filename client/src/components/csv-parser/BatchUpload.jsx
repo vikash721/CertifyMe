@@ -32,7 +32,7 @@ export default function BatchUpload() {
       skipEmptyLines: true,
       complete: (results) => {
         // Validate required fields
-        const requiredFields = ["Recipient Name", "Recipient Email", "Achievement Title", "Issue Date"]
+        const requiredFields = ["Recipient Name", "Recipient Email", "Achievement Title", "Issue Date", "Issued By", "Details"]
         const headers = results.meta.fields || []
 
         const missingFields = requiredFields.filter((field) => !headers.includes(field))
@@ -75,7 +75,7 @@ export default function BatchUpload() {
   }
 
   const handleDrop = (e) => {
-    e.prevent.prevent()
+    e.preventDefault()
     e.stopPropagation()
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
@@ -142,7 +142,9 @@ export default function BatchUpload() {
       (row["Recipient Name"] && row["Recipient Name"].toLowerCase().includes(searchLower)) ||
       (row["Recipient Email"] && row["Recipient Email"].toLowerCase().includes(searchLower)) ||
       (row["Achievement Title"] && row["Achievement Title"].toLowerCase().includes(searchLower)) ||
-      (row["Certificate ID"] && row["Certificate ID"].toLowerCase().includes(searchLower))
+      (row["Certificate ID"] && row["Certificate ID"].toLowerCase().includes(searchLower)) ||
+      (row["Issued By"] && row["Issued By"].toLowerCase().includes(searchLower)) ||
+      (row["Details"] && row["Details"].toLowerCase().includes(searchLower))
     )
   })
 
