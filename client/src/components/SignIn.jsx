@@ -30,7 +30,7 @@ const SignIn = () => {
       if (response.ok) {
         localStorage.setItem("token", data.token);
         console.log("Login successful");
-        navigate("/dashboard");
+        navigate("/issuer-dashboard");
       } else {
         setError(data.message || "Invalid credentials");
       }
