@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight , ChevronDown, ChevronUp, Edit, Trash, Search, FileText, Filter, Shield, Download } from "lucide-react"
+import { ArrowRight , ChevronDown, ChevronUp, Edit, Trash, Search, FileText, Filter, Shield, Download, Eye } from "lucide-react"
+import CertificatePreviewBulk from "../IssuerDashboard/Certificate_preview_bulk/CertificatePreviewBulk" // Import the preview component
 
 export default function DataTable({
   sortedData,
@@ -18,8 +19,31 @@ export default function DataTable({
   proceedToStep3,
   csvData,
 }) {
+  const [previewMode, setPreviewMode] = useState(false)
+  const [previewData, setPreviewData] = useState(null)
+
+  const handlePreview = (row) => {
+    setPreviewData({
+      recipientName: row["Recipient Name"],
+      achievementTitle: row["Achievement Title"],
+      additionalDetails: row["Details"],
+      issueDate: row["Issue Date"],
+      certificateId: row["Certificate ID"],
+      issuedBy: row["Issued By"]
+    })
+    setPreviewMode(true)
+  }
+
   return (
     <>
+      {previewMode && (
+        <CertificatePreviewBulk 
+          previewMode={previewMode} 
+          setPreviewMode={setPreviewMode} 
+          formData={previewData} 
+          selectedTemplate={1} // Assuming you have a way to select template
+        />
+      )}
       <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
           <div className="flex items-center">
@@ -192,8 +216,11 @@ export default function DataTable({
                       <td className="p-4 w-2/12 truncate">{row["Details"]}</td>
                       <td className="p-4 w-1/12">
                         <div className="flex items-center space-x-2">
-                          <button className="text-slate-400 hover:text-white transition-colors cursor-pointer">
-                            <Edit className="h-4 w-4" />
+                          <button 
+                            className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+                            onClick={() => handlePreview(row)}
+                          >
+                            <Eye className="h-4 w-4" />
                           </button>
                           <button className="text-slate-400 hover:text-white transition-colors cursor-pointer">
                             <Trash className="h-4 w-4" />

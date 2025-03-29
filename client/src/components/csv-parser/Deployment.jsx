@@ -8,7 +8,7 @@ export default function Deployment({
   isDeploying,
   deploymentSuccess,
   clearData,
-  csvData,
+  csvData = [], // Add default value
   goBackToStep2
 }) {
   return (
