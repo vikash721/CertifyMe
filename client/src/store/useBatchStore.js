@@ -29,6 +29,6 @@ const useBatchStore = create((set) => ({
       selectedRows: [],
       deploymentSuccess: false,
     }),
-}))
+}));
 
-export default useBatchStore
+export default useBatchStore;

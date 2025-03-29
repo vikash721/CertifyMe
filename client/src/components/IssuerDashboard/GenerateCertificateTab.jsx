@@ -7,7 +7,7 @@ import { Download, Hexagon, Shield, X } from "lucide-react"
 import GenerateCertificateForm from "./GenerateCertificateForm"
 import TemplateSelector from "./TemplateSelector"
 import BatchCertificateGenerate from "./BatchCertificateGeneration"
-import BlockchainIssueModal from "../web3/BlockchainIssueModal" // Import the modal
+// import BlockchainIssueModal from "../web3/BlockchainIssueModal" // Import the modal
 import PaymentModal from "../payment/PaymentModal"
 
 export default function GenerateCertificateTab({ previewMode, setPreviewMode, formData, setFormData, templates, selectedTemplate, setSelectedTemplate }) {
