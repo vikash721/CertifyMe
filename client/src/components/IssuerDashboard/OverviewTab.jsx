@@ -16,17 +16,16 @@ import {
 
 
 
-
-
-
-
-
-
 export default function OverviewTab({ stats, recentCertificates }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
+
+
+
+
+
           <motion.div
             key={index}
             className="bg-slate-800 rounded-xl p-6 border border-slate-700"
@@ -44,6 +43,8 @@ export default function OverviewTab({ stats, recentCertificates }) {
               </div>
             </div>
           </motion.div>
+
+          
         ))}
       </div>
 
