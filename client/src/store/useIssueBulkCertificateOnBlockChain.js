@@ -75,17 +75,13 @@ const useBulkCertificateStore = create((set) => ({
 
   issueBatchCertificates: async (batchData) => {
     const { account, walletConnected } = useWalletStore.getState();
-    const { setLoading, setTxHash, setIsProcessing, setIsComplete } =
-      useBulkCertificateStore.getState();
 
     if (!walletConnected) {
       alert("Please connect your wallet first!");
       return;
     }
 
-    setLoading(true);
-    setIsProcessing(true);
-    setIsComplete(false);
+    set({ loading: true, isProcessing: true, isComplete: false });
 
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
@@ -106,8 +102,7 @@ const useBulkCertificateStore = create((set) => ({
       } catch (error) {
         console.error("Gas estimation failed:", error);
         alert("Transaction failed during gas estimation. Please try again.");
-        setLoading(false);
-        setIsProcessing(false);
+        set({ loading: false, isProcessing: false });
         return;
       }
 
@@ -123,14 +118,12 @@ const useBulkCertificateStore = create((set) => ({
       );
 
       await tx.wait();
-      setTxHash(tx.hash);
-      setIsComplete(true);
+      set({ txHash: tx.hash, isComplete: true });
     } catch (error) {
       console.error("Blockchain transaction failed:", error);
       alert(`Transaction failed: ${error.message || "Unknown error"}`);
     } finally {
-      setLoading(false);
-      setIsProcessing(false);
+      set({ loading: false, isProcessing: false });
     }
   },
 

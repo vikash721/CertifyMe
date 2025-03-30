@@ -152,7 +152,7 @@ export default function TemplateCustomizer({
                     {settings.showLogo && settings.logoPosition === "top" && (
                       <div className="flex items-center justify-center mb-2">
                         <Hexagon className="h-8 w-8 mr-2" />
-                        <h1 className="text-2xl font-bold">CertChain</h1>
+                        <h1 className="text-2xl font-bold">CertifyMe</h1>
                       </div>
                     )}
                     <p className="text-sm opacity-80">Blockchain-Verified Certificate of Completion</p>
@@ -209,7 +209,7 @@ export default function TemplateCustomizer({
                   {settings.showLogo && settings.logoPosition === "bottom" && (
                     <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center mt-4">
                       <Hexagon className="h-5 w-5 mr-1" />
-                      <span className="text-sm font-bold">CertChain</span>
+                      <span className="text-sm font-bold">CertifyMe</span>
                     </div>
                   )}
                 </div>

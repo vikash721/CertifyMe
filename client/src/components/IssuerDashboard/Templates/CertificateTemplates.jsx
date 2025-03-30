@@ -343,7 +343,7 @@ function TemplateCard({ template, onSelect }) {
           <div className=" bg-opacity-10 backdrop-blur-sm rounded-lg p-4 w-full max-w-[80%] aspect-[1.4/1] flex flex-col items-center justify-center text-white text-center">
             <div className="flex items-center justify-center mb-1">
               <Hexagon className="h-4 w-4 mr-1" />
-              <h3 className="text-xs font-bold">CertChain</h3>
+              <h3 className="text-xs font-bold">CertifyMe</h3>
             </div>
             <div className="border-t border-b border-white border-opacity-20 w-full my-2 py-2">
               <p className="text-[10px] uppercase tracking-wider opacity-70">Certificate of Achievement</p>

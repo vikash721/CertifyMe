@@ -81,21 +81,7 @@ export default function CertificatePreviewBulk({ previewMode, setPreviewMode, fo
         </div>
       </div>
 
-      <div className="mt-6 flex justify-center space-x-4">
-        <button className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center z-30">
-          <Download className="h-4 w-4 mr-2" />
-          Download Certificate
-        </button>
-
-        <button
-          onClick={handleIssueCertificate}
-          formData={formData}
-          className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center z-30"
-        >
-          <Shield className="h-4 w-4 mr-2" />
-          Issue on Blockchain
-        </button>
-      </div>
+     
     </motion.div>
     )
 }
