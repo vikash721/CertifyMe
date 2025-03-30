@@ -2,27 +2,16 @@
 
 import { motion } from "framer-motion"
 import {
-    BarChart3,
-    Clock,
-    Download,
-    FileText,
-    Plus,
-  
-  } from "lucide-react"
-  import {FiCopy, FiEye } from "react-icons/fi"
+  BarChart3,
+  Clock,
+  Download,
+  FileText,
+  Plus,
 
+} from "lucide-react"
+import { FiCopy, FiEye } from "react-icons/fi"
 
-
-
-
-
-
-
-
-
-
-
-export default function OverviewTab({ stats, recentCertificates }) {
+export default function OverviewTab({ stats = [], recentCertificates = [] }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -35,12 +24,19 @@ export default function OverviewTab({ stats, recentCertificates }) {
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
             <div className="flex items-center">
-              <div className={`h-12 w-12 rounded-lg bg-${stat.color}-600/20 flex items-center justify-center`}>
-                <stat.icon className={`h-6 w-6 text-${stat.color}-400`} />
+              <div
+                className={`h-12 w-12 rounded-lg ${stat.color ? `bg-${stat.color}-600/20` : "bg-gray-600/20"
+                  } flex items-center justify-center`}
+              >
+                {stat.icon ? (
+                  <stat.icon className={`h-6 w-6 ${stat.color ? `text-${stat.color}-400` : "text-gray-400"}`} />
+                ) : (
+                  <FileText className="h-6 w-6 text-gray-400" />
+                )}
               </div>
               <div className="ml-4">
-                <p className="text-sm text-slate-400">{stat.title}</p>
-                <p className="text-2xl font-bold">{stat.value}</p>
+                <p className="text-sm text-slate-400">{stat.title || "N/A"}</p>
+                <p className="text-2xl font-bold">{stat.value || "0"}</p>
               </div>
             </div>
           </motion.div>
@@ -126,15 +122,18 @@ export default function OverviewTab({ stats, recentCertificates }) {
             <tbody>
               {recentCertificates.map((cert, index) => (
                 <tr key={index} className="border-t border-slate-700">
-                  <td className="p-4 font-mono text-sm">{cert.id}</td>
-                  <td className="p-4">{cert.recipient}</td>
-                  <td className="p-4">{cert.course}</td>
-                  <td className="p-4 text-slate-400">{cert.date}</td>
+                  <td className="p-4 font-mono text-sm">{cert.id || "N/A"}</td>
+                  <td className="p-4">{cert.recipient || "N/A"}</td>
+                  <td className="p-4">{cert.course || "N/A"}</td>
+                  <td className="p-4 text-slate-400">{cert.date || "N/A"}</td>
                   <td className="p-4">
                     <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${cert.status === "Active" ? "bg-green-600/20 text-green-400" : "bg-red-600/20 text-red-400"}`}
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${cert.status === "Active"
+                          ? "bg-green-600/20 text-green-400"
+                          : "bg-red-600/20 text-red-400"
+                        }`}
                     >
-                      {cert.status}
+                      {cert.status || "Unknown"}
                     </span>
                   </td>
                   <td className="p-4">
@@ -157,5 +156,5 @@ export default function OverviewTab({ stats, recentCertificates }) {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

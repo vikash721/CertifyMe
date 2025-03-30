@@ -1,20 +1,48 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import {
-
-  RefreshCcw,
-
-} from "lucide-react"
-import { FiCheck, FiCopy, FiEye } from "react-icons/fi"
+import { RefreshCcw } from "lucide-react"
 
 export default function GenerateCertificateForm({ formData, setFormData, setPreviewMode }) {
+  const [showModal, setShowModal] = useState(false) // State to toggle the modal
+  const [aiPrompt, setAiPrompt] = useState("") // State for the AI prompt
+  const [loading, setLoading] = useState(false) // State for loading
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }))
+  }
+
+  const handleGenerateWithAI = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch("http://localhost:5000/api/certificates/generate-description", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: `Generate a professional certificate description for ${formData.recipientName} who completed the course "${formData.achievementTitle}".` }),
+      })
+
+      const data = await response.json()
+      if (response.ok) {
+        setFormData((prev) => ({
+          ...prev,
+          additionalDetails: data.description,
+        }))
+        setShowModal(false) // Close the modal after generating
+      } else {
+        console.error("Failed to generate description:", data.error)
+      }
+    } catch (err) {
+      console.error("Error:", err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -123,6 +151,13 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
               rows={3}
               className="w-full bg-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
+            <button
+              type="button"
+              onClick={() => setShowModal(true)} // Open the modal
+              className="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              Generate with AI
+            </button>
           </div>
 
           <div className="flex justify-end space-x-3">
@@ -137,12 +172,44 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
               onClick={() => setPreviewMode(true)}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center cursor-pointer"
             >
-              <FiEye className="cursor-pointer h-4 w-4 mr-2" />
               Preview Certificate
             </button>
           </div>
         </form>
       </div>
+
+      {/* Modal for AI Prompt */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-slate-800 rounded-lg p-6 w-96">
+            <h3 className="text-lg font-bold mb-4">Generate Additional Details with AI</h3>
+            <textarea
+              value={aiPrompt}
+              onChange={(e) => setAiPrompt(e.target.value)}
+              rows={4}
+              placeholder="Enter your prompt here..."
+              className="w-full bg-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+            <div className="flex justify-end space-x-3 mt-4">
+              <button
+                type="button"
+                onClick={() => setShowModal(false)} // Close the modal
+                className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleGenerateWithAI}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                disabled={loading}
+              >
+                {loading ? "Generating..." : "Generate"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </motion.div>
   )
 }

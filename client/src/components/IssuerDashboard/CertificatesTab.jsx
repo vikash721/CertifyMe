@@ -1,10 +1,19 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Search, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react"
-import CertificateTable from "./CertificateTable"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Search, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react";
+import CertificateTable from "./CertificateTable"; // Ensure this is the correct import
 
-export default function CertificatesTab({ recentCertificates }) {
+export default function CertificatesTab() {
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const certificates = []; // Replace with actual data or fetch logic
+
+  // Filter certificates based on the search term
+  const filteredCertificates = certificates.filter((certificate) =>
+    certificate.recipientName?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="space-y-6">
       <motion.div
@@ -23,6 +32,8 @@ export default function CertificatesTab({ recentCertificates }) {
               <input
                 type="text"
                 placeholder="Search certificates..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="bg-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
@@ -39,9 +50,11 @@ export default function CertificatesTab({ recentCertificates }) {
             </div>
           </div>
         </div>
-        <CertificateTable recentCertificates={recentCertificates} />
+        <CertificateTable recentCertificates={filteredCertificates} />
         <div className="p-4 border-t border-slate-700 flex items-center justify-between">
-          <p className="text-sm text-slate-400">Showing 1-10 of 1,284 certificates</p>
+          <p className="text-sm text-slate-400">
+            Showing {filteredCertificates.length} of {certificates.length} certificates
+          </p>
           <div className="flex items-center space-x-2">
             <button className="bg-slate-700 hover:bg-slate-600 text-white p-2 rounded-lg transition-colors">
               <ChevronLeft className="h-4 w-4" />
@@ -62,5 +75,5 @@ export default function CertificatesTab({ recentCertificates }) {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
