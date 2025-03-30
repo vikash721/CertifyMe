@@ -1,27 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
-import IssuerDashboard from "./pages/IssuerDashboard"
+import Home from "./pages/Home";
+import IssuerDashboard from "./pages/IssuerDashboard";
 import NotFound from "./pages/NotFound";
-
-import BatchCertificateGnerate from "./components/IssuerDashboard/BatchCertificateGeneration";
-import BatchUpload from "./components/csv-parser/BatchUpload";
-import TemplatesPage from "./components/IssuerDashboard/Templates/CertificateTemplates";
-import PaymentModal from "./components/payment/PaymentModal"
-
 
 export default function App() {
   return (
     <Routes>
-      
+      {/* Home Route */}
       <Route path="/" element={<Home />} />
-      <Route path="/issuer-dashboard" element={<IssuerDashboard />} />
-      <Route path="/batch" element={<BatchCertificateGnerate/>} />
-      <Route path="/test" element={<BatchUpload/>} />
 
-      <Route path="/template" element={<TemplatesPage/>} />
-     <Route path="/pay" element={<PaymentModal/>} />
+      {/* Issuer Dashboard Route */}
+      <Route path="/issuer-dashboard/*" element={<IssuerDashboard />} />
 
-
+      {/* Catch-All Route for 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
