@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Routes, Route, Outlet } from "react-router-dom"
 import { motion } from "framer-motion"
 import { FileText, Image, Plus, Search, Shield, Users, Filter, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -10,6 +11,7 @@ import OverviewTab from "../components/IssuerDashboard/OverviewTab"
 import GenerateCertificateTab from "../components/IssuerDashboard/GenerateCertificateTab"
 import CertificatesTab from "../components/IssuerDashboard/CertificatesTab"
 import TemplatesTab from "../components/IssuerDashboard/TemplatesTab"
+import SettingsTab from "../components/IssuerDashboard/SettingsTab"
 
 export default function IssuerDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -78,9 +80,9 @@ export default function IssuerDashboard() {
       <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? "lg:ml-64" : "ml-0"}`}>
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} activeTab={activeTab} />
         <div className="p-6">
-          {activeTab === "overview" && <OverviewTab stats={stats} recentCertificates={recentCertificates} />}
-          {activeTab === "generate" && (
-            <GenerateCertificateTab
+          <Routes>
+            <Route path="overview" element={<OverviewTab stats={stats} recentCertificates={recentCertificates} />} />
+            <Route path="generate" element={<GenerateCertificateTab
               previewMode={previewMode}
               setPreviewMode={setPreviewMode}
               formData={formData}
@@ -88,10 +90,12 @@ export default function IssuerDashboard() {
               templates={templates}
               selectedTemplate={selectedTemplate}
               setSelectedTemplate={setSelectedTemplate}
-            />
-          )}
-          {activeTab === "certificates" && <CertificatesTab recentCertificates={recentCertificates} />}
-          {activeTab === "templates" && <TemplatesTab />}
+            />} />
+            <Route path="certificates" element={<CertificatesTab recentCertificates={recentCertificates} />} />
+            <Route path="templates" element={<TemplatesTab />} />
+            <Route path="settings" element={<SettingsTab/>} />
+            <Route path="*" element={<OverviewTab stats={stats} recentCertificates={recentCertificates} />} />
+          </Routes>
         </div>
       </main>
     </div>

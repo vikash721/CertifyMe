@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import {
   LayoutDashboard,
   Plus,
@@ -32,41 +33,61 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, activeTab, setAct
           </div>
         </div>
         <nav className="space-y-1">
-          <button
+          <Link
+            to="overview"
             className={`cursor-pointer flex items-center w-full px-3 py-2 rounded-lg transition-colors ${activeTab === "overview" ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-700"}`}
             onClick={() => setActiveTab("overview")}
           >
             <LayoutDashboard className="h-5 w-5 mr-3" />
             Dashboard
-          </button>
-          <button
+          </Link>
+          <Link
+            to="generate"
             className={`cursor-pointer flex items-center w-full px-3 py-2 rounded-lg transition-colors ${activeTab === "generate" ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-700"}`}
             onClick={() => setActiveTab("generate")}
           >
             <Plus className="h-5 w-5 mr-3" />
             Generate Certificate
-          </button>
-          <button
+          </Link>
+          <Link
+            to="certificates"
             className={`cursor-pointer flex items-center w-full px-3 py-2 rounded-lg transition-colors ${activeTab === "certificates" ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-700"}`}
             onClick={() => setActiveTab("certificates")}
           >
             <FileText className="h-5 w-5 mr-3" />
             Certificates
-          </button>
-          <button
+          </Link>
+
+
+
+          <Link
+            to="templates"
             className={`cursor-pointer flex items-center w-full px-3 py-2 rounded-lg transition-colors ${activeTab === "templates" ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-700"}`}
             onClick={() => setActiveTab("templates")}
           >
             <Image className="h-5 w-5 mr-3" />
             Templates
-          </button>
-          <button
+          </Link>
+
+
+
+          <Link
+            to="settings"
             className={`cursor-pointer flex items-center w-full px-3 py-2 rounded-lg transition-colors ${activeTab === "settings" ? "bg-blue-600 text-white" : "text-slate-300 hover:bg-slate-700"}`}
             onClick={() => setActiveTab("settings")}
           >
             <Settings className="h-5 w-5 mr-3" />
             Settings
-          </button>
+          </Link>
+
+
+
+
+          
+
+
+
+          
         </nav>
       </div>
       <div className="absolute bottom-0 w-full p-4 border-t border-slate-700">

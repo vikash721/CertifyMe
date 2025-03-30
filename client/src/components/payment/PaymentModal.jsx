@@ -12,7 +12,7 @@ import PaymentComplete from "./payment-dep/PaymentComplete";
 import { Shield, Lock, Landmark } from "lucide-react";
 import useCertifyMeStore from "../../store/useIssueCertificateOnBlockChain";
 
-export default function PaymentModal({ isOpen, onClose, amount = 199, currency = "USD", onPaymentComplete, formData }) {
+export default function PaymentModal({ isOpen, onClose, amount = "...", currency = "USD", onPaymentComplete, formData }) {
     const {
         walletConnected,
         selectedWallet,
