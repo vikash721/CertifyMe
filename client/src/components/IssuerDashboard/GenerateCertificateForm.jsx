@@ -57,8 +57,8 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
             <label className="block text-sm font-medium mb-2">Course/Achievement Title</label>
             <input
               type="text"
-              name="courseTitle"
-              value={formData.courseTitle}
+              name="achievementTitle"
+              value={formData.achievementTitle}
               onChange={handleInputChange}
               className="w-full bg-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -135,7 +135,7 @@ export default function GenerateCertificateForm({ formData, setFormData, setPrev
             <button
               type="button"
               onClick={() => setPreviewMode(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center cursor-pointer"
             >
               <FiEye className="cursor-pointer h-4 w-4 mr-2" />
               Preview Certificate

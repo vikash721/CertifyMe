@@ -1,12 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import {
 
-    RefreshCcw,
-  
-  } from "lucide-react"
-  import { FiCheck, FiCopy, FiEye } from "react-icons/fi"
 import BatchUpload from "../csv-parser/BatchUpload"
 
 export default function BatchCertificateGnerate({ formData, setFormData, setPreviewMode }) {

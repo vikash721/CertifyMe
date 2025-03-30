@@ -1,6 +1,9 @@
 "use client"
 
 import { Bell, Menu, Search } from "lucide-react"
+import ConnectWallet from "../web3/ConnectWallet"
+
+
 
 export default function Header({ sidebarOpen, setSidebarOpen, activeTab }) {
   return (
@@ -33,6 +36,9 @@ export default function Header({ sidebarOpen, setSidebarOpen, activeTab }) {
               3
             </span>
           </button>
+          <div className="flex items-center space-x-4">
+          <ConnectWallet />
+        </div>
         </div>
       </div>
     </header>

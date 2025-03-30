@@ -1,6 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import { Upload, X, FileText, AlertCircle, Download, ArrowRight } from "lucide-react"
+import { saveAs } from 'file-saver'
 
 export default function FileUpload({
   fileName,
@@ -14,6 +15,17 @@ export default function FileUpload({
   proceedToStep2,
   csvData,
 }) {
+  const downloadTemplate = () => {
+    const csvTemplate = [
+      ["Recipient Name", "Recipient Email", "Achievement Title", "Issue Date", "Issued By", "Details"],
+      ["Alice Johnson", "alice@example.com", "Best Innovator", "2025-03-25", "certifyMe", "Some random details"],
+      ["Bob Smith", "bob@example.com", "Top Performer", "2025-03-24", "certifyMe", "Some random details"]
+    ]
+    const csvContent = "data:text/csv;charset=utf-8," + csvTemplate.map(e => e.join(",")).join("\n")
+    const encodedUri = encodeURI(csvContent)
+    saveAs(encodedUri, "csv_template.csv")
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,7 +59,7 @@ export default function FileUpload({
           <p className="text-lg mb-2">Drag and drop your CSV file here</p>
           <p className="text-sm text-slate-400 mb-4">or click to browse</p>
           <p className="text-xs text-slate-500">
-            Required fields: Recipient Name, Recipient Email, Achievement Title, Issue Date
+            Required fields: Recipient Name, Recipient Email, Achievement Title, Issue Date, Issued By, Details
           </p>
         </motion.div>
       </div>
@@ -102,7 +114,9 @@ export default function FileUpload({
         <p className="text-xs text-slate-400 mb-3">
           Download our CSV template to ensure your data is formatted correctly
         </p>
-        <button className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+        <button 
+          onClick={downloadTemplate}
+          className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
           <Download className="h-4 w-4 mr-2" />
           Download CSV Template
         </button>

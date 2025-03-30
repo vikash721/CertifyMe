@@ -8,7 +8,8 @@ import Sidebar from "../components/IssuerDashboard/Sidebar"
 import Header from "../components/IssuerDashboard/Header"
 import OverviewTab from "../components/IssuerDashboard/OverviewTab"
 import GenerateCertificateTab from "../components/IssuerDashboard/GenerateCertificateTab"
-import CertificateTable from "../components/IssuerDashboard/CertificateTable"
+import CertificatesTab from "../components/IssuerDashboard/CertificatesTab"
+import TemplatesTab from "../components/IssuerDashboard/TemplatesTab"
 
 export default function IssuerDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -18,7 +19,7 @@ export default function IssuerDashboard() {
   const [formData, setFormData] = useState({
     recipientName: "John Doe",
     recipientEmail: "john.doe@example.com",
-    courseTitle: "Advanced Blockchain Development",
+    achievementTitle: "Advanced Blockchain Development",
     issueDate: "2023-12-15",
     issuedBy: "CertifyMe",
     certificateId: "CERT-" + Math.random().toString(36).substring(2, 10).toUpperCase(),
@@ -89,64 +90,8 @@ export default function IssuerDashboard() {
               setSelectedTemplate={setSelectedTemplate}
             />
           )}
-          {activeTab === "certificates" && (
-            <div className="space-y-6">
-              <motion.div
-                className="bg-slate-800 rounded-xl border border-slate-700"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="p-6 border-b border-slate-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                    <h2 className="text-lg font-bold">All Certificates</h2>
-                    <p className="text-sm text-slate-400">Manage all your issued certificates</p>
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        placeholder="Search certificates..."
-                        className="bg-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                      />
-                      <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-                    </div>
-                    <div className="flex gap-3">
-                      <button className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
-                        <Filter className="h-4 w-4 mr-2" />
-                        Filter
-                      </button>
-                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
-                        <Plus className="h-4 w-4 mr-2" />
-                        New Certificate
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <CertificateTable recentCertificates={recentCertificates} />
-                <div className="p-4 border-t border-slate-700 flex items-center justify-between">
-                  <p className="text-sm text-slate-400">Showing 1-10 of 1,284 certificates</p>
-                  <div className="flex items-center space-x-2">
-                    <button className="bg-slate-700 hover:bg-slate-600 text-white p-2 rounded-lg transition-colors">
-                      <ChevronLeft className="h-4 w-4" />
-                    </button>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 rounded-lg transition-colors">
-                      1
-                    </button>
-                    <button className="bg-slate-700 hover:bg-slate-600 text-white w-8 h-8 rounded-lg transition-colors">
-                      2
-                    </button>
-                    <button className="bg-slate-700 hover:bg-slate-600 text-white w-8 h-8 rounded-lg transition-colors">
-                      3
-                    </button>
-                    <button className="bg-slate-700 hover:bg-slate-600 text-white p-2 rounded-lg transition-colors">
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          )}
+          {activeTab === "certificates" && <CertificatesTab recentCertificates={recentCertificates} />}
+          {activeTab === "templates" && <TemplatesTab />}
         </div>
       </main>
     </div>
